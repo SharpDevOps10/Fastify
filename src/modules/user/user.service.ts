@@ -10,3 +10,11 @@ export async function createUser (input: CreateUseInput) {
     data: { ...rest, salt, password: hash },
   });
 }
+
+export async function findUserByEmail (email: string) {
+  return prisma.user.findUnique({
+    where: {
+      email,
+    },
+  });
+}

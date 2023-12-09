@@ -3,7 +3,7 @@ import fastifyJwt from '@fastify/jwt';
 import userRoute from './modules/user/user.route';
 import { userSchemas } from './modules/user/user.schema';
 
-const server = Fastify();
+export const server = Fastify();
 
 server.register(fastifyJwt, {
   secret: process.env.SECRET as string,
