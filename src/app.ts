@@ -39,12 +39,10 @@ server.decorate(
   }
 );
 
-async function main () {
+const main = async () => {
   for (const schema of [ ...userSchemas, ...productSchemas ]) {
     server.addSchema(schema);
   }
-
-
 
   server.register(userRoute, { prefix: 'api/users' });
   server.register(productRoute, { prefix: 'api/products' });
@@ -58,6 +56,6 @@ async function main () {
     console.error(e);
     process.exit(1);
   }
-}
+};
 
 main();
