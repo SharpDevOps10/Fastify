@@ -1,6 +1,8 @@
 import Fastify, { FastifyReply, FastifyRequest } from 'fastify';
 import fastifyJwt from '@fastify/jwt';
 import userRoute from './modules/user/user.route';
+import swagger from '@fastify/swagger';
+import { withRefResolver } from 'fastify-zod';
 import { userSchemas } from './modules/user/user.schema';
 import { productSchemas } from './modules/products/product.schema';
 import productRoute from './modules/products/product.route';
@@ -46,6 +48,18 @@ const main = async () => {
 
   server.register(userRoute, { prefix: 'api/users' });
   server.register(productRoute, { prefix: 'api/products' });
+
+  server.register(
+    swagger,
+    withRefResolver({
+      openapi: {
+        info: {
+          title: 'Fastify API',
+          description: 'Top api docs',
+          version: '1.0.0',
+        },
+      },
+    }));
 
   try {
     const port = Number(process.env.PORT);
