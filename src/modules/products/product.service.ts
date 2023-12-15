@@ -1,4 +1,4 @@
-import { CreateProductInput } from './product.schema';
+import { CreateProductInput, UpdateProductInput } from './product.schema';
 import prisma from '../../utils/prisma';
 
 export const createProduct = async (data: CreateProductInput & { ownerId: number }) => {
@@ -21,5 +21,14 @@ export const getProducts = async () => {
         },
       },
     },
+  });
+};
+
+export const updateProduct = async (productId: number, data: UpdateProductInput) => {
+  return prisma.product.update({
+    where: {
+      id: productId,
+    },
+    data,
   });
 };
