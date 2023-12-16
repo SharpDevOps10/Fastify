@@ -1,5 +1,10 @@
 import { FastifyInstance } from 'fastify';
-import { createProductHandler, getProductsHandler, updateProductHandler } from './product.controller';
+import {
+  createProductHandler,
+  deleteProductHandler,
+  getProductsHandler,
+  updateProductHandler,
+} from './product.controller';
 import { $ref } from './product.schema';
 
 const productRoute = async (server: FastifyInstance) => {
@@ -34,6 +39,20 @@ const productRoute = async (server: FastifyInstance) => {
       },
     },
   }, updateProductHandler);
+
+  server.delete('/:productId', {
+    schema: {
+      params: {
+        type: 'object',
+        properties: {
+          productId: { type: 'number' },
+        },
+      },
+      response: {
+        200: $ref('productResponseSchema'),
+      },
+    },
+  }, deleteProductHandler);
 };
 
 export default productRoute;
