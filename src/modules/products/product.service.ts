@@ -1,42 +1,18 @@
 import { CreateProductInput, UpdateProductInput } from './product.schema';
-import prisma from '../../utils/prisma';
+import { productRepository } from './products.repository';
 
 export const createProduct = async (data: CreateProductInput & { ownerId: number }) => {
-  return prisma.product.create({ data });
+  return productRepository.createProduct(data);
 };
 
 export const getProducts = async () => {
-  return prisma.product.findMany({
-    select: {
-      content: true,
-      title: true,
-      price: true,
-      id: true,
-      createdAt: true,
-      updatedAt: true,
-      owner: {
-        select: {
-          name: true,
-          id: true,
-        },
-      },
-    },
-  });
+  return productRepository.getProducts();
 };
 
 export const updateProduct = async (productId: number, data: UpdateProductInput) => {
-  return prisma.product.update({
-    where: {
-      id: productId,
-    },
-    data,
-  });
+  return productRepository.updateProduct(productId, data);
 };
 
 export const deleteProduct = async (productId: number) => {
-  return prisma.product.delete({
-    where: {
-      id: productId,
-    },
-  });
+  return productRepository.deleteProduct(productId);
 };
