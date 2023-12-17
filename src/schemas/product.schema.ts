@@ -22,7 +22,7 @@ const productResponseSchema = z.object({
   ...productGenerated,
 });
 
-export const updateProductSchema = z.object({
+const updateProductSchema = z.object({
   title: z.string().optional(),
   price: z.number().optional(),
   content: z.string().optional(),

@@ -4,8 +4,8 @@ import {
   deleteProductHandler,
   getProductsHandler,
   updateProductHandler,
-} from './product.controller';
-import { $ref } from './product.schema';
+} from '../controllers/product.controller';
+import { $ref } from '../schemas/product.schema';
 
 const productRoute = async (server: FastifyInstance) => {
   server.post('/', {
@@ -27,6 +27,7 @@ const productRoute = async (server: FastifyInstance) => {
   }, getProductsHandler);
 
   server.patch('/:productId', {
+    preHandler: [server.authenticate],
     schema: {
       params: {
         type: 'object',
@@ -41,6 +42,7 @@ const productRoute = async (server: FastifyInstance) => {
   }, updateProductHandler);
 
   server.delete('/:productId', {
+    preHandler: [server.authenticate],
     schema: {
       params: {
         type: 'object',

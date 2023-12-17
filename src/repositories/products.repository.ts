@@ -1,5 +1,5 @@
-import prisma from '../../utils/prisma';
-import { CreateProductInput, UpdateProductInput } from './product.schema';
+import prisma from '../utils/prisma';
+import { CreateProductInput, UpdateProductInput } from '../schemas/product.schema';
 
 export const productRepository = {
   createProduct: async (data: CreateProductInput & { ownerId: number }) => {

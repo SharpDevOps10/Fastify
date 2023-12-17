@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { CreateProductInput, UpdateProductInput } from './product.schema';
-import { createProduct, deleteProduct, getProducts, updateProduct } from './product.service';
+import { CreateProductInput, UpdateProductInput } from '../schemas/product.schema';
+import { createProduct, deleteProduct, getProducts, updateProduct } from '../services/product.service';
 
 export const createProductHandler = async (request: FastifyRequest<{ Body: CreateProductInput }>) => {
   return await createProduct({
