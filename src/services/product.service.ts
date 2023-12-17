@@ -1,5 +1,5 @@
-import { CreateProductInput, UpdateProductInput } from './product.schema';
-import { productRepository } from './products.repository';
+import { CreateProductInput, UpdateProductInput } from '../schemas/product.schema';
+import { productRepository } from '../repositories/products.repository';
 
 export const createProduct = async (data: CreateProductInput & { ownerId: number }) => {
   return productRepository.createProduct(data);

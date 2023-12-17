@@ -1,11 +1,11 @@
 import Fastify, { FastifyReply, FastifyRequest } from 'fastify';
 import fastifyJwt from '@fastify/jwt';
-import userRoute from './modules/user/user.route';
+import userRoute from './routes/user.route';
 import swagger from '@fastify/swagger';
 import { withRefResolver } from 'fastify-zod';
-import { userSchemas } from './modules/user/user.schema';
-import { productSchemas } from './modules/products/product.schema';
-import productRoute from './modules/products/product.route';
+import { userSchemas } from './schemas/user.schema';
+import { productSchemas } from './schemas/product.schema';
+import productRoute from './routes/product.route';
 
 export const server = Fastify();
 

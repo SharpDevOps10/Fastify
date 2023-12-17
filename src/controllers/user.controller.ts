@@ -1,8 +1,8 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { createUser, findUserByEmail, findUsers } from './user.service';
-import { CreateUseInput, LoginInput } from './user.schema';
-import { verifyPassword } from '../../utils/hash';
-import { server } from '../../app';
+import { createUser, findUserByEmail, findUsers } from '../services/user.service';
+import { CreateUseInput, LoginInput } from '../schemas/user.schema';
+import { verifyPassword } from '../utils/hash';
+import { server } from '../app';
 
 export const registerUserHandler = async (request: FastifyRequest<{ Body: CreateUseInput }>, reply: FastifyReply) => {
   const body = request.body;
