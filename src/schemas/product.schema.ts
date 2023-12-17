@@ -17,7 +17,7 @@ const createProductSchema = z.object({
   ...productInput,
 });
 
-const productResponseSchema = z.object({
+export const productResponseSchema = z.object({
   ...productInput,
   ...productGenerated,
 });
