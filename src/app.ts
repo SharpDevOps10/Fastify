@@ -6,6 +6,7 @@ import { withRefResolver } from 'fastify-zod';
 import { userSchemas } from './schemas/user.schema';
 import { productSchemas } from './schemas/product.schema';
 import productRoute from './routes/product.route';
+import { tagSchemas } from './schemas/tag.schema';
 
 export const server = Fastify();
 
@@ -42,7 +43,7 @@ server.decorate(
 );
 
 const main = async () => {
-  for (const schema of [ ...userSchemas, ...productSchemas ]) {
+  for (const schema of [ ...userSchemas, ...productSchemas, ...tagSchemas ]) {
     server.addSchema(schema);
   }
 
